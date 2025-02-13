@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace AmazonPHP\SellingPartner\Api\CatalogApi;
 
@@ -28,6 +30,12 @@ interface CatalogItemSDKInterface
 
     public const OPERATION_SEARCHCATALOGITEMS_PATH = '/catalog/2022-04-01/items';
 
+    public const OPERATION_LISTCATALOGCATEGORIES = 'listCatalogCategories';
+
+    public const OPERATION_LISTCATALOGCATEGORIES_PATH = '/catalog/v0/categories';
+
+
+
     /**
      * Operation getCatalogItem.
      *
@@ -39,7 +47,7 @@ interface CatalogItemSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function getCatalogItem(AccessToken $accessToken, string $region, string $asin, array $marketplace_ids, ?array $included_data = null, ?string $locale = null) : \AmazonPHP\SellingPartner\Model\CatalogItem\Item;
+    public function getCatalogItem(AccessToken $accessToken, string $region, string $asin, array $marketplace_ids, ?array $included_data = null, ?string $locale = null): \AmazonPHP\SellingPartner\Model\CatalogItem\Item;
 
     /**
      * Operation searchCatalogItems.
@@ -60,5 +68,19 @@ interface CatalogItemSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function searchCatalogItems(AccessToken $accessToken, string $region, array $marketplace_ids, ?array $identifiers = null, ?string $identifiers_type = null, ?array $included_data = null, ?string $locale = null, ?string $seller_id = null, ?array $keywords = null, ?array $brand_names = null, ?array $classification_ids = null, int $page_size = 10, ?string $page_token = null, ?string $keywords_locale = null) : \AmazonPHP\SellingPartner\Model\CatalogItem\ItemSearchResults;
+    public function searchCatalogItems(AccessToken $accessToken, string $region, array $marketplace_ids, ?array $identifiers = null, ?string $identifiers_type = null, ?array $included_data = null, ?string $locale = null, ?string $seller_id = null, ?array $keywords = null, ?array $brand_names = null, ?array $classification_ids = null, int $page_size = 10, ?string $page_token = null, ?string $keywords_locale = null): \AmazonPHP\SellingPartner\Model\CatalogItem\ItemSearchResults;
+
+    /**
+     * Operation listCatalogCategories.
+     *
+     * @param string $marketplace_id
+     * @param string $asin
+     * @param string $seller_sku
+     *
+     * @throws ApiException on non-2xx response
+     * @throws InvalidArgumentException
+     */
+
+
+    public function listCatalogCategories(AccessToken $accessToken, string $region, string $marketplace_id, ?string $asin = null, ?string $seller_sku = null): \AmazonPHP\SellingPartner\Model\CatalogItem\ListCatalogCategoriesResponse;
 }
