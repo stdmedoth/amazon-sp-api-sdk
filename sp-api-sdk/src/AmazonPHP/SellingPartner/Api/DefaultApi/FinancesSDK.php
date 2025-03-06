@@ -930,9 +930,9 @@ final class FinancesSDK implements FinancesSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function listTransactions(AccessToken $accessToken, string $region, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse
+    public function listTransactions(AccessToken $accessToken, string $region, \DateTimeInterface $posted_after, \DateTimeInterface $posted_before, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse
     {
-        $request = $this->listTransactionsRequest($accessToken, $region, $order_id, $max_results_per_page, $next_token);
+        $request = $this->listTransactionsRequest($accessToken, $region, $posted_after, $posted_before, $next_token);
 
         $this->configuration->extensions()->preRequest('Finances', 'listTransactions', $request);
 
@@ -1027,7 +1027,7 @@ final class FinancesSDK implements FinancesSDKInterface
      *
      * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listTransactionsRequest(AccessToken $accessToken, string $region, DateTimeInterface $posted_after, DateTimeInterface $posted_before, ?string $next_token = null): RequestInterface
+    public function listTransactionsRequest(AccessToken $accessToken, string $region, \DateTimeInterface $posted_after, \DateTimeInterface $posted_before, ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (\is_array($order_id) && \count($order_id) === 0)) {

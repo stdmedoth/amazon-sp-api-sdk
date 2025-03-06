@@ -106,5 +106,5 @@ interface FinancesSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function listTransactions(AccessToken $accessToken, string $region, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse;
+    public function listTransactions(AccessToken $accessToken, string $region, \DateTimeInterface $posted_after, \DateTimeInterface $posted_before, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse;
 }
