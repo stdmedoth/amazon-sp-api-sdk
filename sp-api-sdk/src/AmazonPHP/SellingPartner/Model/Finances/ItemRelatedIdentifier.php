@@ -8,52 +8,37 @@ use AmazonPHP\SellingPartner\Exception\AssertionException;
 use AmazonPHP\SellingPartner\ModelInterface;
 use AmazonPHP\SellingPartner\ObjectSerializer;
 
-class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterface
+class ItemRelatedIdentifier implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterface
 {
     final public const DISCRIMINATOR = null;
 
     protected array $container = [];
 
-    protected static string $openAPIModelName = 'Item';
+    protected static string $openAPIModelName = 'ItemRelatedIdentifier';
 
     protected static array $openAPITypes = [
-        'description' => 'string',
-        'related_identifiers' => '\AmazonPHP\SellingPartner\Model\Finances\ItemRelatedIdentifier[]',
-        'total_amount' => '\AmazonPHP\SellingPartner\Model\Finances\Currency',
-        'breakdowns' => '\AmazonPHP\SellingPartner\Model\Finances\Breakdown[]',
-        'contexts' => '\AmazonPHP\SellingPartner\Model\Finances\Context[]',
+        'item_related_identifier_name' => 'string',
+        'item_related_identifier_value' => 'string',
     ];
 
     protected static array $openAPIFormats = [
-        'description' => null,
-        'related_identifiers' => null,
-        'total_amount' => null,
-        'breakdowns' => null,
-        'contexts' => null,
+        'item_related_identifier_name' => null,
+        'item_related_identifier_value' => null,
     ];
 
     protected static array $attributeMap = [
-        'description' => 'description',
-        'related_identifiers' => 'relatedIdentifiers',
-        'total_amount' => 'totalAmount',
-        'breakdowns' => 'breakdowns',
-        'contexts' => 'contexts',
+        'item_related_identifier_name' => 'itemRelatedIdentifierName',
+        'item_related_identifier_value' => 'itemRelatedIdentifierValue',
     ];
 
     protected static array $setters = [
-        'description' => 'setDescription',
-        'related_identifiers' => 'setRelatedIdentifiers',
-        'total_amount' => 'setTotalAmount',
-        'breakdowns' => 'setBreakdowns',
-        'contexts' => 'setContexts',
+        'item_related_identifier_name' => 'setItemRelatedIdentifierName',
+        'item_related_identifier_value' => 'setItemRelatedIdentifierValue',
     ];
 
     protected static array $getters = [
-        'description' => 'getDescription',
-        'related_identifiers' => 'getRelatedIdentifiers',
-        'total_amount' => 'getTotalAmount',
-        'breakdowns' => 'getBreakdowns',
-        'contexts' => 'getContexts',
+        'item_related_identifier_name' => 'getItemRelatedIdentifierName',
+        'item_related_identifier_value' => 'getItemRelatedIdentifierValue',
     ];
 
     public function __construct(array $data = null)
@@ -88,58 +73,25 @@ class Item implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterfa
         return self::$getters;
     }
 
-    public function getDescription(): ?string
+    public function getItemRelatedIdentifierName(): ?string
     {
-        return $this->container['description'];
+        return $this->container['item_related_identifier_name'];
     }
 
-    public function setDescription(?string $value): self
+    public function setItemRelatedIdentifierName(?string $value): self
     {
-        $this->container['description'] = $value;
+        $this->container['item_related_identifier_name'] = $value;
         return $this;
     }
 
-    public function getRelatedIdentifiers(): ?array
+    public function getItemRelatedIdentifierValue(): ?string
     {
-        return $this->container['related_identifiers'];
+        return $this->container['item_related_identifier_value'];
     }
 
-    public function setRelatedIdentifiers(?array $value): self
+    public function setItemRelatedIdentifierValue(?string $value): self
     {
-        $this->container['related_identifiers'] = $value;
-        return $this;
-    }
-
-    public function getTotalAmount(): ?Currency
-    {
-        return $this->container['total_amount'];
-    }
-
-    public function setTotalAmount(?Currency $value): self
-    {
-        $this->container['total_amount'] = $value;
-        return $this;
-    }
-
-    public function getBreakdowns(): ?array
-    {
-        return $this->container['breakdowns'];
-    }
-
-    public function setBreakdowns(?array $value): self
-    {
-        $this->container['breakdowns'] = $value;
-        return $this;
-    }
-
-    public function getContexts(): ?array
-    {
-        return $this->container['contexts'];
-    }
-
-    public function setContexts(?array $value): self
-    {
-        $this->container['contexts'] = $value;
+        $this->container['item_related_identifier_value'] = $value;
         return $this;
     }
 

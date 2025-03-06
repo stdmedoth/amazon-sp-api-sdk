@@ -23,7 +23,7 @@ use AmazonPHP\SellingPartner\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterface
+class ListTransactionsPayload implements \ArrayAccess, \JsonSerializable, \Stringable, ModelInterface
 {
     final public const DISCRIMINATOR = null;
 
@@ -32,7 +32,7 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @var string
      */
-    protected static string $openAPIModelName = 'ListTransactionsResponse';
+    protected static string $openAPIModelName = 'ListTransactionsPayload';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -40,8 +40,8 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\AmazonPHP\SellingPartner\Model\Finances\ListTransactionsPayload',
-        'errors' => '\AmazonPHP\SellingPartner\Model\Finances\Error[]',
+        'next_token' => 'string',
+        'transactions' => '\AmazonPHP\SellingPartner\Model\Finances\Transaction[]',
     ];
 
     /**
@@ -54,8 +54,8 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'payload' => null,
-        'errors' => null,
+        'next_token' => null,
+        'transactions' => null,
     ];
 
     /**
@@ -65,8 +65,8 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @var string[]
      */
     protected static array $attributeMap = [
-        'payload' => 'payload',
-        'errors' => 'errors',
+        'next_token' => 'nextToken',
+        'transactions' => 'transactions',
     ];
 
     /**
@@ -75,8 +75,8 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @var string[]
      */
     protected static array $setters = [
-        'payload' => 'setPayload',
-        'errors' => 'setErrors',
+        'next_token' => 'setNextToken',
+        'transactions' => 'setTransactions',
     ];
 
     /**
@@ -85,8 +85,8 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      * @var string[]
      */
     protected static array $getters = [
-        'payload' => 'getPayload',
-        'errors' => 'getErrors',
+        'next_token' => 'getNextToken',
+        'transactions' => 'getTransactions',
     ];
 
     /**
@@ -104,8 +104,8 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      */
     public function __construct(array $data = null)
     {
-        $this->container['payload'] = $data['payload'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['next_token'] = $data['next_token'] ?? null;
+        $this->container['transactions'] = $data['transactions'] ?? null;
     }
 
     /**
@@ -173,41 +173,37 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @throws AssertionException
      */
-    public function validate(): void
-    {
-        if ($this->container['payload'] !== null) {
-            $this->container['payload']->validate();
-        }
-    }
+    public function validate(): void {}
 
     /**
-     * Gets payload.
+     * Gets next_token.
      */
-    public function getPayload(): ?ListTransactionsPayload
+    public function getNextToken(): ?string
     {
-        return $this->container['payload'];
+        return $this->container['next_token'];
     }
 
     /**
-     * Sets payload.
+     * Sets next_token.
      *
-     * @param null|\AmazonPHP\SellingPartner\Model\Finances\ListTransactionsPayload $payload payload
+     * @param null|string $next_token when present and not empty, pass this string token in the next request to return the next response page
      */
-    public function setPayload(?ListTransactionsPayload $payload): self
+    public function setNextToken(?string $next_token): self
     {
-        $this->container['payload'] = $payload;
+        $this->container['next_token'] = $next_token;
 
         return $this;
     }
 
+
     /**
      * Gets errors.
      *
-     * @return null|\AmazonPHP\SellingPartner\Model\Finances\Error[]
+     * @return null|\AmazonPHP\SellingPartner\Model\Finances\Transaction[]
      */
-    public function getErrors(): ?array
+    public function getTransactions(): ?array
     {
-        return $this->container['errors'];
+        return $this->container['transactions'];
     }
 
     /**
@@ -215,9 +211,9 @@ class ListTransactionsResponse implements \ArrayAccess, \JsonSerializable, \Stri
      *
      * @param null|\AmazonPHP\SellingPartner\Model\Finances\Error[] $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setErrors(?array $errors): self
+    public function setTransactions(?array $transactions): self
     {
-        $this->container['errors'] = $errors;
+        $this->container['transactions'] = $transactions;
 
         return $this;
     }

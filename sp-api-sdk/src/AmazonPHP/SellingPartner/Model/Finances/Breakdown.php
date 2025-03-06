@@ -18,7 +18,7 @@ class Breakdown implements \ArrayAccess, \JsonSerializable, \Stringable, ModelIn
 
     protected static array $openAPITypes = [
         'breakdown_type' => 'string',
-        'breakdown_amount' => 'Currency',
+        'breakdown_amount' => '\AmazonPHP\SellingPartner\Model\Finances\Currency',
         'breakdowns' => '\AmazonPHP\SellingPartner\Model\Finances\Breakdown[]',
     ];
 

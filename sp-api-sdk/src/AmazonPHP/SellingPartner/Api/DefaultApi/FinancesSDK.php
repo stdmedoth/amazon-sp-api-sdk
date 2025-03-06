@@ -1029,20 +1029,6 @@ final class FinancesSDK implements FinancesSDKInterface
      */
     public function listTransactionsRequest(AccessToken $accessToken, string $region, \DateTimeInterface $posted_after, \DateTimeInterface $posted_before, ?string $next_token = null): RequestInterface
     {
-        // verify the required parameter 'order_id' is set
-        if ($order_id === null || (\is_array($order_id) && \count($order_id) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $order_id when calling listTransactions'
-            );
-        }
-
-        if ($max_results_per_page !== null && $max_results_per_page > 100) {
-            throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listTransactions, must be smaller than or equal to 100.');
-        }
-
-        if ($max_results_per_page !== null && $max_results_per_page < 1) {
-            throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listTransactions, must be bigger than or equal to 1.');
-        }
 
         $resourcePath = '/finances/2024-06-19/transactions';
         $formParams = [];
@@ -1058,7 +1044,7 @@ final class FinancesSDK implements FinancesSDKInterface
         }
 
         if ($posted_after !== null) {
-            $queryParams['PostedAfter'] = ObjectSerializer::toString($posted_after);
+            $queryParams['postedAfter'] = ObjectSerializer::toString($posted_after);
         }
 
         if (\is_array($posted_before)) {
@@ -1066,7 +1052,7 @@ final class FinancesSDK implements FinancesSDKInterface
         }
 
         if ($posted_before !== null) {
-            $queryParams['PostedBefore'] = ObjectSerializer::toString($posted_before);
+            $queryParams['postedBefore'] = ObjectSerializer::toString($posted_before);
         }
 
         // query params
@@ -1075,7 +1061,7 @@ final class FinancesSDK implements FinancesSDKInterface
         }
 
         if ($next_token !== null) {
-            $queryParams['NextToken'] = ObjectSerializer::toString($next_token);
+            $queryParams['nextToken'] = ObjectSerializer::toString($next_token);
         }
 
         if (\count($queryParams)) {
@@ -1083,14 +1069,6 @@ final class FinancesSDK implements FinancesSDKInterface
         }
 
         // path params
-        if ($order_id !== null) {
-            $resourcePath = \str_replace(
-                '{' . 'orderId' . '}',
-                ObjectSerializer::toPathValue($order_id),
-                $resourcePath
-            );
-        }
-
         if ($multipart) {
             $headers = [
                 'accept' => ['application/json'],

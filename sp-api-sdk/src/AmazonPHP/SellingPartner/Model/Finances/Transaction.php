@@ -18,7 +18,7 @@ class Transaction implements \ArrayAccess, \JsonSerializable, \Stringable, Model
     protected static string $openAPIModelName = 'Transaction';
 
     protected static array $openAPITypes = [
-        'selling_partner_metadata' => '\AmazonPHP\SellingPartner\Model\Finances\SellingPartnerMetadata[]',
+        'selling_partner_metadata' => '\AmazonPHP\SellingPartner\Model\Finances\SellingPartnerMetadata',
         'related_identifiers' => '\AmazonPHP\SellingPartner\Model\Finances\RelatedIdentifier[]',
         'transaction_type' => 'string',
         'transaction_id' => 'string',
@@ -48,18 +48,18 @@ class Transaction implements \ArrayAccess, \JsonSerializable, \Stringable, Model
     ];
 
     protected static array $attributeMap = [
-        'selling_partner_metadata' => 'SellingPartnerMetadata',
-        'related_identifiers' => 'RelatedIdentifiers',
-        'transaction_type' => 'TransactionType',
-        'transaction_id' => 'TransactionId',
-        'transaction_status' => 'TransactionStatus',
-        'description' => 'Description',
-        'posted_date' => 'PostedDate',
-        'total_amount' => 'TotalAmount',
-        'marketplace_details' => 'MarketplaceDetails',
-        'items' => 'Items',
-        'contexts' => 'Contexts',
-        'breakdowns' => 'Breakdowns',
+        'selling_partner_metadata' => 'sellingPartnerMetadata',
+        'related_identifiers' => 'relatedIdentifiers',
+        'transaction_type' => 'transactionType',
+        'transaction_id' => 'transactionId',
+        'transaction_status' => 'transactionStatus',
+        'description' => 'description',
+        'posted_date' => 'postedDate',
+        'total_amount' => 'totalAmount',
+        'marketplace_details' => 'marketplaceDetails',
+        'items' => 'items',
+        'contexts' => 'contexts',
+        'breakdowns' => 'breakdowns',
     ];
 
     protected static array $setters = [
