@@ -1013,7 +1013,7 @@ final class FinancesSDK implements FinancesSDKInterface
         return ObjectSerializer::deserialize(
             $this->configuration,
             (string) $response->getBody(),
-            '\AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse',
+            '\AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse',
             []
         );
     }
@@ -1044,7 +1044,7 @@ final class FinancesSDK implements FinancesSDKInterface
             throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listTransactions, must be bigger than or equal to 1.');
         }
 
-        $resourcePath = '/finances/v0/orders/{orderId}/financialEvents';
+        $resourcePath = '/finances/2024-06-19/transactions';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

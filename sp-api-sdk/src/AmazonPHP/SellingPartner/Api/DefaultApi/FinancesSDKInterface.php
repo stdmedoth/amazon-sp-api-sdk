@@ -38,6 +38,10 @@ interface FinancesSDKInterface
 
     public const OPERATION_LISTFINANCIALEVENTSBYORDERID_PATH = '/finances/v0/orders/{orderId}/financialEvents';
 
+    public const OPERATION_LISTRANSACTIONS = 'listTransactions';
+
+    public const OPERATION_LISTRANSACTIONS_PATH = '/finances/2024-06-19/transactions';
+
     /**
      * Operation listFinancialEventGroups.
      *
@@ -89,4 +93,18 @@ interface FinancesSDKInterface
      * @throws InvalidArgumentException
      */
     public function listFinancialEventsByOrderId(AccessToken $accessToken, string $region, string $order_id, int $max_results_per_page = 100, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse;
+
+
+
+    /**
+     * Operation listTransactions.
+     *
+     * @param null|\DateTimeInterface $posted_after A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in ISO 8601 date time format. (optional)
+     * @param null|\DateTimeInterface $posted_before A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
+     * @param null|string $next_token A string token returned in the response of your previous request. (optional)
+     *
+     * @throws ApiException on non-2xx response
+     * @throws InvalidArgumentException
+     */
+    public function listTransactions(AccessToken $accessToken, string $region, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse;
 }
