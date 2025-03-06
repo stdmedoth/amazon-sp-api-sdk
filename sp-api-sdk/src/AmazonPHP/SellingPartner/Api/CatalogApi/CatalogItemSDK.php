@@ -667,12 +667,14 @@ final class CatalogItemSDK implements CatalogItemSDKInterface
 
 
         // query params
+        $queryParams['MarketplaceId'] = ObjectSerializer::toString($marketplace_id);
+
         if ($asin !== null) {
-            $queryParams['asin'] = ObjectSerializer::toString($asin);
+            $queryParams['ASIN'] = ObjectSerializer::toString($asin);
         }
         // query params
         if ($seller_sku !== null) {
-            $queryParams['seller_sku'] = ObjectSerializer::toString($seller_sku);
+            $queryParams['SellerSKU'] = ObjectSerializer::toString($seller_sku);
         }
 
         if (\count($queryParams)) {

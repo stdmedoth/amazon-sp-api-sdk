@@ -40,7 +40,7 @@ class ListCatalogCategoriesResponse implements \ArrayAccess, \JsonSerializable, 
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ListOfCategories',
+        'payload' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ListOfCategories[]',
         'errors' => '\AmazonPHP\SellingPartner\Model\CatalogItem\ErrorList',
     ];
 
@@ -186,8 +186,9 @@ class ListCatalogCategoriesResponse implements \ArrayAccess, \JsonSerializable, 
 
     /**
      * Gets display_name.
+     * @return \AmazonPHP\SellingPartner\Model\CatalogItem\ListOfCategories[]
      */
-    public function getPayload(): string
+    public function getPayload(): array
     {
         return $this->container['payload'];
     }
@@ -197,7 +198,7 @@ class ListCatalogCategoriesResponse implements \ArrayAccess, \JsonSerializable, 
      *
      * @param string $display_name display name for the classification
      */
-    public function setPayload(ListOfCategories $payload): self
+    public function setPayload(?array $payload): self
     {
         $this->container['payload'] = $payload;
 
@@ -207,7 +208,7 @@ class ListCatalogCategoriesResponse implements \ArrayAccess, \JsonSerializable, 
     /**
      * Gets classification_id.
      */
-    public function getErrors(): string
+    public function getErrors(): ?ErrorList
     {
         return $this->container['errors'];
     }
@@ -217,9 +218,9 @@ class ListCatalogCategoriesResponse implements \ArrayAccess, \JsonSerializable, 
      *
      * @param string $classification_id identifier of the classification (browse node identifier)
      */
-    public function setClassificationId(string $classification_id): self
+    public function setErrors(?ErrorList $errors): self
     {
-        $this->container['classification_id'] = $classification_id;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

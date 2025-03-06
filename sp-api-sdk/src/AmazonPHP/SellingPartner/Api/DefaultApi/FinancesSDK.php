@@ -28,9 +28,7 @@ use Psr\Log\LoggerInterface;
  */
 final class FinancesSDK implements FinancesSDKInterface
 {
-    public function __construct(private readonly ClientInterface $client, private readonly HttpFactory $httpFactory, private readonly Configuration $configuration, private readonly LoggerInterface $logger)
-    {
-    }
+    public function __construct(private readonly ClientInterface $client, private readonly HttpFactory $httpFactory, private readonly Configuration $configuration, private readonly LoggerInterface $logger) {}
 
     /**
      * Operation listFinancialEventGroups.
@@ -43,7 +41,7 @@ final class FinancesSDK implements FinancesSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function listFinancialEventGroups(AccessToken $accessToken, string $region, ?int $max_results_per_page = 100, ?\DateTimeInterface $financial_event_group_started_before = null, ?\DateTimeInterface $financial_event_group_started_after = null, ?string $next_token = null) : \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventGroupsResponse
+    public function listFinancialEventGroups(AccessToken $accessToken, string $region, ?int $max_results_per_page = 100, ?\DateTimeInterface $financial_event_group_started_before = null, ?\DateTimeInterface $financial_event_group_started_after = null, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventGroupsResponse
     {
         $request = $this->listFinancialEventGroupsRequest($accessToken, $region, $max_results_per_page, $financial_event_group_started_before, $financial_event_group_started_after, $next_token);
 
@@ -141,7 +139,7 @@ final class FinancesSDK implements FinancesSDKInterface
      *
      * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listFinancialEventGroupsRequest(AccessToken $accessToken, string $region, int $max_results_per_page = 100, ?\DateTimeInterface $financial_event_group_started_before = null, ?\DateTimeInterface $financial_event_group_started_after = null, ?string $next_token = null) : RequestInterface
+    public function listFinancialEventGroupsRequest(AccessToken $accessToken, string $region, int $max_results_per_page = 100, ?\DateTimeInterface $financial_event_group_started_before = null, ?\DateTimeInterface $financial_event_group_started_after = null, ?string $next_token = null): RequestInterface
     {
         if ($max_results_per_page !== null && $max_results_per_page > 100) {
             throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listFinancialEventGroups, must be smaller than or equal to 100.');
@@ -261,7 +259,7 @@ final class FinancesSDK implements FinancesSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function listFinancialEvents(AccessToken $accessToken, string $region, ?int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null) : \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse
+    public function listFinancialEvents(AccessToken $accessToken, string $region, ?int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse
     {
         $request = $this->listFinancialEventsRequest($accessToken, $region, $max_results_per_page, $posted_after, $posted_before, $next_token);
 
@@ -359,7 +357,7 @@ final class FinancesSDK implements FinancesSDKInterface
      *
      * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listFinancialEventsRequest(AccessToken $accessToken, string $region, int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null) : RequestInterface
+    public function listFinancialEventsRequest(AccessToken $accessToken, string $region, int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null): RequestInterface
     {
         if ($max_results_per_page !== null && $max_results_per_page > 100) {
             throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listFinancialEvents, must be smaller than or equal to 100.');
@@ -480,7 +478,7 @@ final class FinancesSDK implements FinancesSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function listFinancialEventsByGroupId(AccessToken $accessToken, string $region, string $event_group_id, ?int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null) : \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse
+    public function listFinancialEventsByGroupId(AccessToken $accessToken, string $region, string $event_group_id, ?int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse
     {
         $request = $this->listFinancialEventsByGroupIdRequest($accessToken, $region, $event_group_id, $max_results_per_page, $posted_after, $posted_before, $next_token);
 
@@ -579,7 +577,7 @@ final class FinancesSDK implements FinancesSDKInterface
      *
      * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listFinancialEventsByGroupIdRequest(AccessToken $accessToken, string $region, string $event_group_id, int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null) : RequestInterface
+    public function listFinancialEventsByGroupIdRequest(AccessToken $accessToken, string $region, string $event_group_id, int $max_results_per_page = 100, ?\DateTimeInterface $posted_after = null, ?\DateTimeInterface $posted_before = null, ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'event_group_id' is set
         if ($event_group_id === null || (\is_array($event_group_id) && \count($event_group_id) === 0)) {
@@ -714,7 +712,7 @@ final class FinancesSDK implements FinancesSDKInterface
      * @throws ApiException on non-2xx response
      * @throws InvalidArgumentException
      */
-    public function listFinancialEventsByOrderId(AccessToken $accessToken, string $region, string $order_id, ?int $max_results_per_page = 100, ?string $next_token = null) : \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse
+    public function listFinancialEventsByOrderId(AccessToken $accessToken, string $region, string $order_id, ?int $max_results_per_page = 100, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse
     {
         $request = $this->listFinancialEventsByOrderIdRequest($accessToken, $region, $order_id, $max_results_per_page, $next_token);
 
@@ -811,7 +809,7 @@ final class FinancesSDK implements FinancesSDKInterface
      *
      * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
      */
-    public function listFinancialEventsByOrderIdRequest(AccessToken $accessToken, string $region, string $order_id, int $max_results_per_page = 100, ?string $next_token = null) : RequestInterface
+    public function listFinancialEventsByOrderIdRequest(AccessToken $accessToken, string $region, string $order_id, int $max_results_per_page = 100, ?string $next_token = null): RequestInterface
     {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (\is_array($order_id) && \count($order_id) === 0)) {
@@ -843,6 +841,234 @@ final class FinancesSDK implements FinancesSDKInterface
         if ($max_results_per_page !== null) {
             $queryParams['MaxResultsPerPage'] = ObjectSerializer::toString($max_results_per_page);
         }
+        // query params
+        if (\is_array($next_token)) {
+            $next_token = ObjectSerializer::serializeCollection($next_token, '', true);
+        }
+
+        if ($next_token !== null) {
+            $queryParams['NextToken'] = ObjectSerializer::toString($next_token);
+        }
+
+        if (\count($queryParams)) {
+            $query = \http_build_query($queryParams);
+        }
+
+        // path params
+        if ($order_id !== null) {
+            $resourcePath = \str_replace(
+                '{' . 'orderId' . '}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        if ($multipart) {
+            $headers = [
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        } else {
+            $headers = [
+                'content-type' => ['application/json'],
+                'accept' => ['application/json'],
+                'host' => [$this->configuration->apiHost($region)],
+                'user-agent' => [$this->configuration->userAgent()],
+            ];
+        }
+
+        $request = $this->httpFactory->createRequest(
+            'GET',
+            $this->configuration->apiURL($region) . $resourcePath . '?' . $query
+        );
+
+        // for model (json/xml)
+        if (\count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = \is_array($formParamValue) ? $formParamValue : [$formParamValue];
+
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                $request = $request->withParsedBody($multipartContents);
+            } elseif ($headers['content-type'] === ['application/json']) {
+                $request = $request->withBody($this->httpFactory->createStreamFromString(\json_encode($formParams, JSON_THROW_ON_ERROR)));
+            } else {
+                $request = $request->withParsedBody($formParams);
+            }
+        }
+
+        foreach (\array_merge($headerParams, $headers) as $name => $header) {
+            $request = $request->withHeader($name, $header);
+        }
+
+        return HttpSignatureHeaders::forConfig(
+            $this->configuration,
+            $accessToken,
+            $region,
+            $request
+        );
+    }
+
+
+
+    /**
+     * Operation listTransactions.
+     *
+     * @param null|\DateTimeInterface $posted_after A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in ISO 8601 date time format. (optional)
+     * @param null|\DateTimeInterface $posted_before A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
+     * @param null|string $next_token A string token returned in the response of your previous request. (optional)
+     *
+     * @throws ApiException on non-2xx response
+     * @throws InvalidArgumentException
+     */
+    public function listTransactions(AccessToken $accessToken, string $region, ?string $next_token = null): \AmazonPHP\SellingPartner\Model\Finances\ListTransactionsResponse
+    {
+        $request = $this->listTransactionsRequest($accessToken, $region, $order_id, $max_results_per_page, $next_token);
+
+        $this->configuration->extensions()->preRequest('Finances', 'listTransactions', $request);
+
+        try {
+            $correlationId = $this->configuration->idGenerator()->generate();
+            $sanitizedRequest = $request;
+
+            foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                $sanitizedRequest = $sanitizedRequest->withoutHeader($sensitiveHeader);
+            }
+
+            if ($this->configuration->loggingEnabled('Finances', 'listTransactions')) {
+                $this->logger->log(
+                    $this->configuration->logLevel('Finances', 'listTransactions'),
+                    'Amazon Selling Partner API pre request',
+                    [
+                        'api' => 'Finances',
+                        'operation' => 'listTransactions',
+                        'request_correlation_id' => $correlationId,
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                        'request_headers' => $sanitizedRequest->getHeaders(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                    ]
+                );
+            }
+
+            $response = $this->client->sendRequest($request);
+
+            $this->configuration->extensions()->postRequest('Finances', 'listTransactions', $request, $response);
+
+            if ($this->configuration->loggingEnabled('Finances', 'listTransactions')) {
+                $sanitizedResponse = $response;
+
+                foreach ($this->configuration->loggingSkipHeaders() as $sensitiveHeader) {
+                    $sanitizedResponse = $sanitizedResponse->withoutHeader($sensitiveHeader);
+                }
+
+                $this->logger->log(
+                    $this->configuration->logLevel('Finances', 'listTransactions'),
+                    'Amazon Selling Partner API post request',
+                    [
+                        'api' => 'Finances',
+                        'operation' => 'listTransactions',
+                        'response_correlation_id' => $correlationId,
+                        'response_body' => (string) $sanitizedResponse->getBody(),
+                        'response_headers' => $sanitizedResponse->getHeaders(),
+                        'response_status_code' => $sanitizedResponse->getStatusCode(),
+                        'request_uri' => (string) $sanitizedRequest->getUri(),
+                        'request_body' => (string) $sanitizedRequest->getBody(),
+                    ]
+                );
+            }
+        } catch (ClientExceptionInterface $e) {
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                (int) $e->getCode(),
+                null,
+                null,
+                $e
+            );
+        }
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                \sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    (string) $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                (string) $response->getBody()
+            );
+        }
+
+        return ObjectSerializer::deserialize(
+            $this->configuration,
+            (string) $response->getBody(),
+            '\AmazonPHP\SellingPartner\Model\Finances\ListFinancialEventsResponse',
+            []
+        );
+    }
+
+    /**
+     * Create request for operation 'listTransactions'.
+     *
+     * @param null|\DateTimeInterface $posted_after A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in ISO 8601 date time format. (optional)
+     * @param null|\DateTimeInterface $posted_before A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
+     * @param null|string $next_token A string token returned in the response of your previous request. (optional)
+     *
+     * @throws \AmazonPHP\SellingPartner\Exception\InvalidArgumentException
+     */
+    public function listTransactionsRequest(AccessToken $accessToken, string $region, DateTimeInterface $posted_after, DateTimeInterface $posted_before, ?string $next_token = null): RequestInterface
+    {
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (\is_array($order_id) && \count($order_id) === 0)) {
+            throw new InvalidArgumentException(
+                'Missing the required parameter $order_id when calling listTransactions'
+            );
+        }
+
+        if ($max_results_per_page !== null && $max_results_per_page > 100) {
+            throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listTransactions, must be smaller than or equal to 100.');
+        }
+
+        if ($max_results_per_page !== null && $max_results_per_page < 1) {
+            throw new InvalidArgumentException('invalid value for "$max_results_per_page" when calling DefaultApi.listTransactions, must be bigger than or equal to 1.');
+        }
+
+        $resourcePath = '/finances/v0/orders/{orderId}/financialEvents';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $multipart = false;
+        $query = '';
+
+        // query params
+        // query params
+        if (\is_array($posted_after)) {
+            $posted_after = ObjectSerializer::serializeCollection($posted_after, '', true);
+        }
+
+        if ($posted_after !== null) {
+            $queryParams['PostedAfter'] = ObjectSerializer::toString($posted_after);
+        }
+
+        if (\is_array($posted_before)) {
+            $posted_before = ObjectSerializer::serializeCollection($posted_before, '', true);
+        }
+
+        if ($posted_before !== null) {
+            $queryParams['PostedBefore'] = ObjectSerializer::toString($posted_before);
+        }
+
         // query params
         if (\is_array($next_token)) {
             $next_token = ObjectSerializer::serializeCollection($next_token, '', true);
